@@ -4,7 +4,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public Transform firePoint;
+    private Transform firePoint;
+    private GameObject foundFirePoint;
     public int ammo = 10;
     private int currentAmmo;
     public float fireRate = 0.5f;
@@ -15,10 +16,22 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         currentAmmo = ammo;
+
+        foundFirePoint = GameObject.Find("FirePoint");
     }
 
     private void Update()
     {
+
+
+        // && = AND
+        // || = OR
+    }
+
+    public void Shoot()
+    {
+        firePoint = foundFirePoint.transform;
+
         if (isReloading)
         {
             return;
@@ -32,14 +45,6 @@ public class Weapon : MonoBehaviour
 
         if (Input.GetButton("Fire1") && Time.time >= lastFireTime + fireRate)
         {
-            Shoot();
-        }
-
-        // && = AND
-        // || = OR
-
-        void Shoot()
-        {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
             Vector2 shootDir = (mousePos - firePoint.position).normalized;
@@ -51,14 +56,14 @@ public class Weapon : MonoBehaviour
             currentAmmo--;
             lastFireTime = Time.time;
         }
+    }
 
-        IEnumerator Reload()
-        {
-            isReloading = true;
-            Debug.Log("Reloading...");
-            yield return new WaitForSeconds(reloadTime);
-            currentAmmo = ammo;
-            isReloading = false;
-        }
+    IEnumerator Reload()
+    {
+        isReloading = true;
+        Debug.Log("Reloading...");
+        yield return new WaitForSeconds(reloadTime);
+        currentAmmo = ammo;
+        isReloading = false;
     }
 }
