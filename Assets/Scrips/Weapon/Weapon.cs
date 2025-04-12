@@ -92,4 +92,6 @@ public class Weapon : MonoBehaviour
 
     public int GetTotalAmmo() => infiniteAmmo ? -1 : totalAmmo;
     public int GetClipAmmo() => currentClipAmmo;
+
+    public bool IsReloading() => isReloading;
 }
