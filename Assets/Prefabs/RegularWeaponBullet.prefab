@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8866343834759017606}
   - component: {fileID: -4184705697060320632}
   m_Layer: 0
-  m_Name: WeaponBullet
+  m_Name: RegularWeaponBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -166,5 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 10
+  damage: 25
   lifeTime: 2.5
+  piercingAmmo: 0
+  hitCooldown: 1
