@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 2196130668354383472}
+  startingAmmo: 10
 --- !u!114 &3180460378750360325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,8 +117,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 8267418221976191031, guid: 8f80d60ccef91214d9f39163a2ca38bb, type: 3}
-  firePoint: {fileID: 0}
-  ammo: 10
+  maxClipAmmo: 10
+  totalAmmo: 100
+  infiniteAmmo: 1
   fireRate: 0.5
   reloadTime: 2
 --- !u!61 &8863850164984735725

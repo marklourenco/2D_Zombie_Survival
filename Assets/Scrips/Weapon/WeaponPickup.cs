@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponPickup : MonoBehaviour
 {
     public GameObject weaponPrefab;
+    public int startingAmmo = 10;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -11,7 +12,7 @@ public class WeaponPickup : MonoBehaviour
             WeaponHandler handler = collision.GetComponent<WeaponHandler>();
             if (handler != null)
             {
-                handler.EquipPickupWeapon(weaponPrefab);
+                handler.EquipPickupWeapon(weaponPrefab, startingAmmo);
                 Destroy(gameObject);
             }
         }

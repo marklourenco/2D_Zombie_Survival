@@ -47,7 +47,7 @@ public class WeaponHandler : MonoBehaviour
         if (currentPickup != null) currentPickup.SetActive(slot == 2);
     }
 
-    public void EquipPickupWeapon(GameObject weaponPrefab)
+    public void EquipPickupWeapon(GameObject weaponPrefab, int startingAmmo)
     {
         if (currentPickup != null)
         {
@@ -58,6 +58,13 @@ public class WeaponHandler : MonoBehaviour
         currentPickup.transform.SetParent(weaponHolder, false); // false = keep local position
         currentPickup.transform.localPosition = Vector3.zero;
         currentPickup.transform.localRotation = Quaternion.identity;
+
+        Weapon weaponScript = currentPickup.GetComponent<Weapon>();
+        if (weaponScript != null)
+        {
+            weaponScript.SetTotalAmmo(startingAmmo);
+        }
+
         currentPickup.SetActive(false);
     }
 
