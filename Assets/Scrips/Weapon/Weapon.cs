@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Weapon : MonoBehaviour
     public bool isEquipped = false;
     private bool flip;
 
+    private float reloadProgress = 0.0f;
+
     private void Start()
     {
         currentClipAmmo = maxClipAmmo;
@@ -41,6 +44,12 @@ public class Weapon : MonoBehaviour
             flip = mouseScreenPos.x < Screen.width / 2;
 
             spriteRenderer.flipY = flip;
+        }
+
+        if (isReloading)
+        {
+            reloadProgress += Time.deltaTime / reloadTime;
+            UIManager.Instance.UpdateReloadBar(reloadProgress);
         }
     }
 
@@ -62,6 +71,7 @@ public class Weapon : MonoBehaviour
         {
             if (currentClipAmmo <= 0)
             {
+                UIManager.Instance.reloadBar.SetActive(true);
                 StartCoroutine(Reload());
                 return;
             }
@@ -81,6 +91,9 @@ public class Weapon : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
+        reloadProgress = 0.0f;
+        UIManager.Instance.UpdateReloadBar(reloadProgress);
+
         Debug.Log("Reloading...");
         yield return new WaitForSeconds(reloadTime);
 
@@ -98,6 +111,7 @@ public class Weapon : MonoBehaviour
         }
 
         isReloading = false;
+        UIManager.Instance.UpdateReloadBar(1.0f);
     }
 
     public void SetTotalAmmo(int amount)

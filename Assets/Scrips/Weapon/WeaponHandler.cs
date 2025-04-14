@@ -99,4 +99,17 @@ public class WeaponHandler : MonoBehaviour
     {
         return activeSlot == 1 ? currentPistol : currentPickup;
     }
+
+    public bool IsReloading()
+    {
+        if (currentPistol != null && currentPistol.GetComponent<Weapon>().IsReloading())
+        {
+            return true;
+        }
+        if (currentPickup != null && currentPickup.GetComponent<Weapon>().IsReloading())
+        {
+            return true;
+        }
+        return false;
+    }
 }

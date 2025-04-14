@@ -10,7 +10,7 @@ public class WeaponPickup : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             WeaponHandler handler = collision.GetComponent<WeaponHandler>();
-            if (handler != null)
+            if (handler != null && !handler.IsReloading())
             {
                 handler.EquipPickupWeapon(weaponPrefab, startingAmmo);
                 Destroy(gameObject);
