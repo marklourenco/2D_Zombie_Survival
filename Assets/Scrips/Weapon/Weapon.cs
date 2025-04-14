@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
     public GameObject bulletPrefab;
     private Transform firePoint;
     private GameObject foundFirePoint;
+    private SpriteRenderer spriteRenderer;
 
     [Header("Ammo Settings")]
     public int maxClipAmmo = 10; // bullets per reload
@@ -20,11 +21,27 @@ public class Weapon : MonoBehaviour
     public float reloadTime = 2.0f;
     private bool isReloading = false;
 
+    public bool isEquipped = false;
+    private bool flip;
+
     private void Start()
     {
         currentClipAmmo = maxClipAmmo;
 
         foundFirePoint = GameObject.Find("FirePoint");
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
+    {
+        if(isEquipped)
+        {
+            Vector3 mouseScreenPos = Input.mousePosition;
+            flip = mouseScreenPos.x < Screen.width / 2;
+
+            spriteRenderer.flipY = flip;
+        }
     }
 
     public void Shoot()

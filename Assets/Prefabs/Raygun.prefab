@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.8898759, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 2196130668354383472}
-  startingAmmo: 10
+  startingAmmo: 1200
 --- !u!114 &3180460378750360325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,11 +116,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5105f12e36e1b546b4344d51955c057, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8267418221976191031, guid: 6d15bd22510bf934d90cf448cbce3df7, type: 3}
-  maxClipAmmo: 200
-  totalAmmo: 400
+  bulletPrefab: {fileID: 8267418221976191031, guid: d9e872b9fa154a741bc06eeb209fba21, type: 3}
+  maxClipAmmo: 400
+  totalAmmo: 1200
   infiniteAmmo: 0
-  fireRate: 0.1
+  fireRate: 0.01
   reloadTime: 3
 --- !u!61 &8867513355431199664
 BoxCollider2D:

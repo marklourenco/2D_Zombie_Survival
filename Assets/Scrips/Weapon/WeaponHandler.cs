@@ -18,6 +18,12 @@ public class WeaponHandler : MonoBehaviour
         currentPistol.transform.localPosition = Vector3.zero;
         currentPistol.transform.localRotation = Quaternion.identity;
         ActiveSlot(1);
+
+        Weapon weaponScript = currentPistol.GetComponent<Weapon>();
+        if (weaponScript != null)
+        {
+            weaponScript.isEquipped = true;
+        }
     }
 
     private void Update()
@@ -83,6 +89,7 @@ public class WeaponHandler : MonoBehaviour
         if (weaponScript != null)
         {
             weaponScript.SetTotalAmmo(startingAmmo);
+            weaponScript.isEquipped = true;
         }
 
         currentPickup.SetActive(false);
